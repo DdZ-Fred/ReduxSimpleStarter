@@ -1,3 +1,5 @@
+const fsMod = require('fs');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -5,6 +7,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  target: 'web',
   devServer: {
     historyApiFallback: true,
     contentBase: './',
