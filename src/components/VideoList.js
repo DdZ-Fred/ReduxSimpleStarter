@@ -1,13 +1,22 @@
 import React, { PropTypes } from 'react';
+import VideoListItem from './VideoListItem';
 
 const propTypes = {
   videos: PropTypes.array.isRequired,
+  onVideoSelect: PropTypes.func.isRequired,
 };
 
-function VideoList({ videos }) {
+function VideoList({ videos, onVideoSelect }) {
+  const videoItems = videos.map((video) => (
+  <VideoListItem
+    key={video.etag}
+    video={video}
+    onVideoSelect={onVideoSelect}/>
+));
+
   return (
     <ul className="col-md-4 list-group">
-      {`There are ${videos.length} videos`}
+      {videoItems}
     </ul>
   );
 }
