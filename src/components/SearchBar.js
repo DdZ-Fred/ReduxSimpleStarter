@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 const propTypes = {
-
+  onSearchTermChange: PropTypes.func.isRequired,
 };
 
 class SearchBar extends Component {
@@ -14,13 +14,18 @@ class SearchBar extends Component {
     };
   }
 
+  onInputChange(term) {
+    this.setState({ term });
+    this.props.onSearchTermChange(this.state.term);
+  }
+
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input
           type="text"
           value={this.state.term}
-          onChange={e => this.setState({ term: e.target.value })}/>
+          onChange={e => this.onInputChange(e.target.value)}/>
       </div>
     );
   }
